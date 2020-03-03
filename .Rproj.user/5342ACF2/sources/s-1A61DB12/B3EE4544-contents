@@ -1,0 +1,36 @@
+#' Theoretical ordinal reliability
+#'
+#' @param lambda Vector of loadings.
+#' @param sigma Vector of standard deviations.
+#' @param cuts List of cuts, matrix of cuts, or vector of cuts that will be
+#'    repeated.
+#' @param type One of `"H"` and `"std"`, defaults to `"H"`.
+#' @return The population ordinal reliabiltiy
+#' @name ordinal_omega
+#' @export
+
+ordinal_omega_ = function(lambda, sigma, cuts, type = c("H", "std")) {
+
+  checkmate::assertNumeric(lambda)
+  k = length(lambda)
+  checkmate::assertNumeric(sigma, len = k)
+  cuts = massage_cuts(cuts, k)
+  checkmate::assertList(cuts, len = k)
+  type = match.arg(type)
+
+  lambda = standardize_lambda(lambda, sigma)
+  sigma = standardize_sigma(lambda, sigma)
+  rho = tcrossprod(lambda, lambda) + diag(sigma^2)
+  v = thurstone(lambda, sigma)
+
+  xi = xi_theoretical(cuts, rho)
+
+  if(type == "H") {
+    c(crossprod(v, xi %*% v))
+  } else {
+    i = rep(1, k)
+    c(crossprod(i, xi %*% v))^2/sum(xi)
+  }
+
+}
+

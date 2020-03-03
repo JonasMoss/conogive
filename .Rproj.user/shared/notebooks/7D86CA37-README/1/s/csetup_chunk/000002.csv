@@ -1,0 +1,2 @@
+"0","knitr::opts_chunk$set(echo = TRUE)"
+"0","knitr::opts_chunk$set(out.width='750px', dpi=200)"

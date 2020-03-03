@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1583232089604.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "265D5E0B",
+    "lastKnownWriteTime" : 1583097224,
+    "last_content_update" : 1583097224,
+    "path" : "C:/GitHub/conogive/tests/testthat/test-helpers.R",
+    "project_path" : "tests/testthat/test-helpers.R",
+    "properties" : {
+        "cursorPosition" : "53,2",
+        "scrollLine" : "40"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

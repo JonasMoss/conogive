@@ -15,3 +15,4 @@ Vector with \verb{-Inf`` prepended and }Inf` appended
 \description{
 Remove Infinities from Vector, Append and Prepend \code{-Inf} and \code{Inf}, and Sort
 }
+\keyword{internal}

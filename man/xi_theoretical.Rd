@@ -18,3 +18,4 @@ Theoretical xi matrix.
 \description{
 Calculate the Theoretical Xi
 }
+\keyword{internal}

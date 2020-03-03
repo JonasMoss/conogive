@@ -5,15 +5,15 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "4|55|8|0|\n10|71|13|0|\n15|51|18|0|\n",
-    "hash" : "3311960339",
+    "hash" : "0",
     "id" : "3BFF10F8",
     "lastKnownWriteTime" : 1583245106,
     "last_content_update" : 1583245106141,
     "path" : "C:/GitHub/conogive/tests/testthat/test-conogive.R",
     "project_path" : "tests/testthat/test-conogive.R",
     "properties" : {
-        "cursorPosition" : "41,0",
-        "scrollLine" : "23"
+        "cursorPosition" : "28,2",
+        "scrollLine" : "20"
     },
     "read_only" : false,
     "read_only_alternatives" : [

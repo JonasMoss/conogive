@@ -1,5 +1,6 @@
 #' Thurstone weights
 #'
+#' @keywords internal
 #' @param lambda Vector of loadings.
 #' @param sigma Vector of standard deviations.
 #' @return The Thurstone weights.
@@ -9,12 +10,14 @@ thurstone = function(lambda, sigma) {
 }
 
 #' Trace of matrix
+#' @keywords internal
 #' @param A A square matrix.
 #' @return Trace of the matrix.
 tr <- function(A) sum(diag(A))
 
 #' Transform y Into a Form Where Each Category is An Integer
 #'
+#' @keywords internal
 #' @param y An array or data frame of observations.
 #' @return A matrix.
 
@@ -27,6 +30,7 @@ ordered_y = function(y) {
 
 #' Remove Infinities from Vector, Append and Prepend `-Inf` and `Inf`, and Sort
 #'
+#' @keywords internal
 #' @param x Numeric vector with no `NA` values.
 #' @return Vector with `-Inf`` prepended and `Inf` appended
 
@@ -64,6 +68,7 @@ massage_cuts = function(cuts, k)  {
 
 #' Calculate the Theoretical Xi
 #'
+#' @keywords internal
 #' @param cuts A matrix, list, or vector of cuts.
 #' @param rho The polychoric correlation matrix; a numeric matrix with no
 #'    missing entries.
@@ -111,6 +116,7 @@ xi_theoretical = function(cuts, rho) {
 
 #' Calculate Sample Xi
 #'
+#' @keywords internal
 #' @param y An array or data frame of observations.
 #' @param cuts A matrix, list, or vector of cuts.
 #' @param use Passed to `stats::cov`; defaults to `"complete.obs"`.
@@ -134,6 +140,7 @@ xi_sample = function(y, cuts, use = "complete.obs") {
 
 #' Transform Likert data to X_hats.
 #'
+#' @keywords internal
 #' @param y Vector of observations.
 #' @param cuts Vector of cuts.
 #' @return The X_hats associated with `y` and `cuts`.
@@ -151,10 +158,12 @@ x_hat = function(y, cuts) {
 
 }
 
-#' Standardize parameter vectors
+#' Standardize Parameter Vectors
 #'
 #' The function `standardize_lambda` standardizes `lambda` and
 #'    `standardize_sigma` standardizes `sigma`.
+#'
+#' @keywords internal
 #' @param lambda Vector of loadings.
 #' @param sigma Vector of standard deviations.
 #' @return Standardized vector.

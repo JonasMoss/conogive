@@ -19,3 +19,4 @@ Sample xi matrix.
 \description{
 Calculate Sample Xi
 }
+\keyword{internal}

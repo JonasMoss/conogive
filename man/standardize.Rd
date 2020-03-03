@@ -4,7 +4,7 @@
 \alias{standardize}
 \alias{standardize_lambda}
 \alias{standardize_sigma}
-\title{Standardize parameter vectors}
+\title{Standardize Parameter Vectors}
 \usage{
 standardize_lambda(lambda, sigma)
 
@@ -22,3 +22,4 @@ Standardized vector.
 The function \code{standardize_lambda} standardizes \code{lambda} and
 \code{standardize_sigma} standardizes \code{sigma}.
 }
+\keyword{internal}

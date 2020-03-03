@@ -15,3 +15,4 @@ Trace of the matrix.
 \description{
 Trace of matrix
 }
+\keyword{internal}

@@ -15,3 +15,4 @@ A matrix.
 \description{
 Transform y Into a Form Where Each Category is An Integer
 }
+\keyword{internal}

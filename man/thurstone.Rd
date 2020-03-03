@@ -17,3 +17,4 @@ The Thurstone weights.
 \description{
 Thurstone weights
 }
+\keyword{internal}

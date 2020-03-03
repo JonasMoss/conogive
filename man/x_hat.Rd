@@ -17,3 +17,4 @@ The X_hats associated with \code{y} and \code{cuts}.
 \description{
 Transform Likert data to X_hats.
 }
+\keyword{internal}

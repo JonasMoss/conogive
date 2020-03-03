@@ -62,7 +62,8 @@ conogive = function(data, use = "complete.obs", ...) {
 }
 
 #' @export
-predict.conogive = function(object, newdata, weights = c("optimal", "equal")) {
+predict.conogive = function(object, newdata, weights = c("optimal", "equal"),
+                                                         ...) {
 
   weights = match.arg(weights)
   lambda = object$lambda

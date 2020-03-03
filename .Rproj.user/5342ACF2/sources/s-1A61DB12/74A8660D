@@ -5,15 +5,15 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "2296944732",
+    "hash" : "0",
     "id" : "74A8660D",
     "lastKnownWriteTime" : 1583153454,
     "last_content_update" : 1583153454877,
-    "path" : "C:/GitHub/standardized/R/latcon.R",
+    "path" : "C:/GitHub/conogive/R/latcon.R",
     "project_path" : "R/latcon.R",
     "properties" : {
         "cursorPosition" : "124,0",
-        "scrollLine" : "119",
+        "scrollLine" : "0",
         "tempName" : "Untitled2"
     },
     "read_only" : false,

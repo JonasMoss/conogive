@@ -1,25 +1,25 @@
 {
     "collab_server" : "",
     "contents" : "",
-    "created" : 1583148418970.000,
+    "created" : 1582964935096.000,
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
     "hash" : "0",
-    "id" : "61AB1D24",
-    "lastKnownWriteTime" : 1582926004,
-    "last_content_update" : 1582926004,
-    "path" : "C:/GitHub/standardized/workspace/verifying_zumbo.R",
-    "project_path" : "workspace/verifying_zumbo.R",
+    "id" : "34229B66",
+    "lastKnownWriteTime" : 1583148222,
+    "last_content_update" : 1583148222919,
+    "path" : "C:/GitHub/conogive/R/ordinal.R",
+    "project_path" : "R/ordinal.R",
     "properties" : {
-        "cursorPosition" : "14,109",
+        "cursorPosition" : "61,0",
         "scrollLine" : "0",
         "tempName" : "Untitled2"
     },
     "read_only" : false,
     "read_only_alternatives" : [
     ],
-    "relative_order" : 7,
+    "relative_order" : 4,
     "source_on_save" : false,
     "source_window" : "",
     "type" : "r_source"

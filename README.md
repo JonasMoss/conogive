@@ -38,10 +38,19 @@ the latent factor with `predict`, and calculate the reliability with
 `ordinal_omega`.
 
 ``` r
+library("conogive")
 extraversion = psychTools::bfi[c("E1", "E2", "E3", "E4", "E5")]
 extraversion[, "E1"] = 7 - extraversion[, "E1"] # Reverse-coded item.
 extraversion[, "E2"] = 7 - extraversion[, "E2"] # Reverse-coded item.
+
 object = conogive(extraversion)
-ordinal_omega(object)
-hist(predict(object, extraversion))
+
+ordinal_omega(object) # Observed reliability
+#> [1] 0.7046056
+omega(object) # Theoretical reliability
+#> [1] 0.8122608
+
+hist(predict(object, extraversion)) # Plot distribution of predictions.
 ```
+
+<img src="man/figures/README-estimate-1.png" width="750px" />

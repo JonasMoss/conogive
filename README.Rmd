@@ -48,12 +48,17 @@ Estimate a congeneric ogive model with `congive`, predict the value of the
 latent factor with `predict`, and calculate the reliability with 
 `ordinal_omega`.
 
-```{r estimate, echo = TRUE, eval = FALSE}
+```{r estimate, echo = TRUE}
+library("conogive")
 extraversion = psychTools::bfi[c("E1", "E2", "E3", "E4", "E5")]
 extraversion[, "E1"] = 7 - extraversion[, "E1"] # Reverse-coded item.
 extraversion[, "E2"] = 7 - extraversion[, "E2"] # Reverse-coded item.
+
 object = conogive(extraversion)
-ordinal_omega(object)
-hist(predict(object, extraversion))
+
+ordinal_omega(object) # Observed reliability
+omega(object) # Theoretical reliability
+
+hist(predict(object, extraversion)) # Plot distribution of predictions.
 
 ```

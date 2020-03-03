@@ -4,7 +4,7 @@
 # conogive <img src="man/figures/logo.png" align="right" width="140" height="70" />
 
 [![Build
-Status](https://travis-ci.com/JonasMoss/conogive.svg?branch=master)](https://travis-ci.org/JonasMoss/conogive)
+Status](https://travis-ci.com/JonasMoss/conogive.svg?branch=master)](https://travis-ci.com/JonasMoss/conogive)
 [![AppVeyor Build
 Status](https://ci.appveyor.com/api/projects/status/github/JonasMoss/conogive?branch=master&svg=true)](https://ci.appveyor.com/project/JonasMoss/conogive)
 [![Project Status: WIP – Initial development is in progress, but there

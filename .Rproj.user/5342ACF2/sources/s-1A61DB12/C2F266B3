@@ -5,16 +5,16 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "3600374725",
+    "hash" : "0",
     "id" : "C2F266B3",
-    "lastKnownWriteTime" : 1583239477,
-    "last_content_update" : 1583239477357,
+    "lastKnownWriteTime" : 1583239973,
+    "last_content_update" : 1583239973568,
     "path" : "C:/GitHub/conogive/README.Rmd",
     "project_path" : "README.Rmd",
     "properties" : {
-        "cursorPosition" : "56,35",
+        "cursorPosition" : "17,99",
         "last_setup_crc32" : "1A61DB12dedaf535",
-        "scrollLine" : "59"
+        "scrollLine" : "10"
     },
     "read_only" : false,
     "read_only_alternatives" : [

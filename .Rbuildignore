@@ -1,0 +1,16 @@
+^appveyor\.yml$
+^standardized\.Rproj$
+^\.Rproj\.user$
+^LICENSE\.md$
+^\.circleci/config\.yml$
+^README\.Rmd$
+^arxiv\.sty$
+^calculations$
+^chunks$
+^code$
+^notes$
+^standardized\.bib$
+^standardized\.tex$
+^workspace$
+^\.travis\.yml$
+^codecov\.yml$

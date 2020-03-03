@@ -1,0 +1,26 @@
+Package: standardized
+Title: Please Avoid the Standardized Alpha
+Version: 0.1.1
+Authors@R: c(
+    person("Jonas", "Moss", , "jonas.gjertsen@gmail.com", role = c("aut", "cre"), 
+      comment = c(ORCID = "0000-0002-6876-6964")
+    ))
+Description: Repository for the paper "Please avoid the standardized alpha".
+License: CC BY-SA 4.0
+Encoding: UTF-8
+LazyData: true
+URL: https://github.com/JonasMoss/standardized
+BugReports: https://github.com/JonasMoss/standardized/issues
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.0.2
+Imports: 
+    lavaan,
+    xtable,
+    psych,
+    mvtnorm,
+    checkmate,
+    psychTools,
+    assertthat
+Suggests: 
+    testthat (>= 2.1.0),
+    covr

@@ -72,7 +72,6 @@ predict.conogive = function(object, newdata, weights = c("optimal", "equal"),
   if(is.null(dim(newdata))) dim(newdata) = c(1, length(newdata))
 
   names = rownames(newdata)
-  newdata = ordered_y(newdata)
 
   k = ncol(newdata)
   cuts = massage_cuts(object$cuts)
@@ -120,7 +119,7 @@ predict.conogive = function(object, newdata, weights = c("optimal", "equal"),
 #' omega(object) # 0.8101108
 
 ordinal_omega = function(object, xi = c("sample", "theoretical"),
-                        weights = c("optimal", "equal")) {
+                        weights = c("optimal", "equal", "sigma")) {
 
   weights = match.arg(weights)
   xi = match.arg(xi)

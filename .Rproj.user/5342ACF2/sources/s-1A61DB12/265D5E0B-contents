@@ -8,6 +8,25 @@ cuts = list(qnorm(seq(0, 1, length.out = 3)),
 rho = cor(y)
 k = ncol(y)
 
+test_that("thurstone works on parallel models", {
+  lambda = rep(1, 4)
+  sigma = rep(1, 4)
+  expect_equal(thurstone(lambda, sigma), c(0.2, 0.2, 0.2, 0.2))
+})
+
+
+test_that("tr works", {
+  expect_equal(tr(rho), sum(diag(rho)))
+})
+
+test_that("trim_vector accepts only numeric vectors with no NAs", {
+  expect_error(trim_vector("a"))
+  expect_error(trim_vector(lm))
+  expect_error(trim_vector(matrix(1, 2, 2)))
+  expect_error(trim_vector(c(1,NA)))
+})
+
+
 test_that("trim_vector accepts only numeric vectors with no NAs", {
   expect_error(trim_vector("a"))
   expect_error(trim_vector(lm))

@@ -11,7 +11,7 @@
 ordinal_omega(
   object,
   xi = c("sample", "theoretical"),
-  weights = c("optimal", "equal")
+  weights = c("optimal", "equal", "sigma")
 )
 
 ordinal_alpha(object, xi = c("sample", "theoretical"))

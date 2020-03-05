@@ -1,6 +1,6 @@
 Package: conogive
-Title: Estimation, reliability coefficients, and prediction for the congeneric
-   ogive model
+Title: Estimation, Reliability Coefficients, and Prediction for the Congeneric
+   Ogive Model
 Version: 0.1.1
 Authors@R: c(
     person("Jonas", "Moss", , "jonas.gjertsen@gmail.com", role = c("aut", "cre"), 

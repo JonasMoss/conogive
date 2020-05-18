@@ -1,0 +1,24 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1589802664279.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3260596146",
+    "id" : "FC941A45",
+    "lastKnownWriteTime" : 1589802404,
+    "last_content_update" : 1589802404,
+    "path" : "~/GitHub/conogive/man/reliability.Rd",
+    "project_path" : "man/reliability.Rd",
+    "properties" : {
+    },
+    "read_only" : true,
+    "read_only_alternatives" : [
+        "R/conogive.R"
+    ],
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_doc"
+}

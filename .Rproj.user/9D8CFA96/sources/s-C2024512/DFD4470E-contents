@@ -22,7 +22,6 @@ knitr::opts_chunk$set(
 [![DOI](https://zenodo.org/badge/244635248.svg)](https://zenodo.org/badge/latestdoi/244635248)
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
-
 An `R` package for the congeneric normal-ogive model.
 
 ```{r setup, include=FALSE}
@@ -65,5 +64,5 @@ hist(predict(object, extraversion)) # Plot distribution of predictions.
 ```
 
 ## References
-McDonald, R. P. (1997). Normal-ogive multidimensional model. In W. J. van der Linden & R. K. Hamble-ton (Eds.), Handbook of modern item response theory (pp. 257–269). Springer. https://doi.org/10.1007/978-1-4757-2691-6_15
+McDonald, R. P. (1997). Normal-ogive multidimensional model. In W. J. van der Linden & R. K. Hambleton (Eds.), Handbook of Modern Item Response Theory (pp. 257–269). Springer. https://doi.org/10.1007/978-1-4757-2691-6_15
 

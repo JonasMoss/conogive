@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1589799179155.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "85B5EA9A",
+    "lastKnownWriteTime" : 1589799509,
+    "last_content_update" : 1589799509465,
+    "path" : "~/GitHub/conogive/R/helpers.R",
+    "project_path" : "R/helpers.R",
+    "properties" : {
+        "cursorPosition" : "136,1",
+        "scrollLine" : "121"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

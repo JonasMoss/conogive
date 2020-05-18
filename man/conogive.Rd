@@ -8,7 +8,7 @@ conogive(data, use = "complete.obs", ...)
 }
 \arguments{
 \item{data}{A data frame of observations or a named list with elements
-\code{lambda}, \code{sigma}, and \code{cuts}. See the details..}
+\code{lambda}, \code{sigma}, and \code{cuts}. See the details.}
 
 \item{use}{Passed to \code{stats::cov}; defaults to \code{"complete.obs"}.}
 
@@ -18,14 +18,27 @@ conogive(data, use = "complete.obs", ...)
 An object of class \code{conogive}.
 }
 \description{
-This function uses \code{psych::polychoric} and \code{psych::fa} to do a barebones
-multivariate ogive model. It is similar to \code{psych::irt.fa}. The \code{...}
-arguments are passed to \code{psych::fa}, which is called with \code{fm = "ml"} by
-default.
+\code{conogive} is used to estimate congeneric normal-ogive models
+(McDonald, R. P. (1997)).
+}
+\details{
+The \code{data} argument can be either a list containing the parameters of
+a normal-ogive model, or raw data. If actual data is passed to \code{data},
+it is passed to \code{psych::polychoric} to estimate its polychoric correlation
+matrix and cutoffs. This is passed to \code{psych::fa} to do a barebones
+multivariate normal-ogive model. The \code{...} arguments are passed to
+\code{psych::fa}, which is called with \code{fm = "ml"} by default.
 }
 \examples{
 extraversion = psychTools::bfi[c("E1", "E2", "E3", "E4", "E5")]
 extraversion[, "E1"] = 7 - extraversion[, "E1"] # Reverse-coded item.
 extraversion[, "E2"] = 7 - extraversion[, "E2"] # Reverse-coded item.
 fit = conogive(extraversion)
+}
+\references{
+McDonald, R. P. (1997). Normal-ogive multidimensional model. In W. J.
+van der Linden & R. K. Hambleton (Eds.), Handbook of Modern Item Response
+Theory (pp. 257–269). Springer.
+\url{https://doi.org/10.1007/978-1-4757-2691-6_15}
+((arxiv paper))
 }

@@ -28,6 +28,8 @@ it is passed to \code{psych::polychoric} to estimate its polychoric correlation
 matrix and cutoffs. This is passed to \code{psych::fa} to do a barebones
 multivariate normal-ogive model. The \code{...} arguments are passed to
 \code{psych::fa}, which is called with \code{fm = "ml"} by default.
+
+Likert data should start with 1, not 0.
 }
 \examples{
 extraversion = psychTools::bfi[c("E1", "E2", "E3", "E4", "E5")]

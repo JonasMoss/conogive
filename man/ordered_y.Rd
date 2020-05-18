@@ -2,7 +2,7 @@
 % Please edit documentation in R/helpers.R
 \name{ordered_y}
 \alias{ordered_y}
-\title{Transform y Into a Form Where Each Category is An Integer}
+\title{Transform y Into a Form Where Each Category is An Positive Integer}
 \usage{
 ordered_y(y)
 }
@@ -13,6 +13,6 @@ ordered_y(y)
 A matrix.
 }
 \description{
-Transform y Into a Form Where Each Category is An Integer
+Transform y Into a Form Where Each Category is An Positive Integer
 }
 \keyword{internal}

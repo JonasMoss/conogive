@@ -10,6 +10,8 @@
 #'   multivariate normal-ogive model. The `...` arguments are passed to
 #'   `psych::fa`, which is called with `fm = "ml"` by default.
 #'
+#' Likert data should start with 1, not 0.
+#'
 #' @param data A data frame of observations or a named list with elements
 #'    `lambda`, `sigma`, and `cuts`. See the details.
 #' @param use Passed to `stats::cov`; defaults to `"complete.obs"`.
@@ -57,12 +59,12 @@ conogive = function(data, use = "complete.obs", ...) {
 
   args = list(...)
   if(is.null(args$fm)) args$fm = "ml"
-
+  assertthat::assert_that(min(data, na.rm = TRUE) >= 1)
   poly = psych::polychoric(data)
   fa = do.call(what = psych::fa, args = c(list(r = poly$rho), args))
   lambda = stats::setNames(c(fa$loadings), colnames(data))
   sigma = c(sqrt(fa$uniquenesses))
-  xi = xi_sample(y = ordered_y(data), cuts = poly$tau, use = use)
+  xi = xi_sample(y = data, cuts = poly$tau, use = use)
 
   object = list(rho = poly$rho, cuts = poly$tau, lambda = lambda, sigma = sigma,
                 xi_sample = xi, n = nrow(data))

@@ -1,9 +1,9 @@
 {
-    "path" : "~/GitHub/conogive/R",
-    "sortOrder" : [
+    "path": "~/GitHub/conogive/tests/testthat",
+    "sortOrder": [
         {
-            "ascending" : true,
-            "columnIndex" : 2
+            "columnIndex": 2,
+            "ascending": true
         }
     ]
 }

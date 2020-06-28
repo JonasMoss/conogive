@@ -32,10 +32,12 @@ multivariate normal-ogive model. The \code{...} arguments are passed to
 Likert data should start with 1, not 0.
 }
 \examples{
-extraversion = psychTools::bfi[c("E1", "E2", "E3", "E4", "E5")]
-extraversion[, "E1"] = 7 - extraversion[, "E1"] # Reverse-coded item.
-extraversion[, "E2"] = 7 - extraversion[, "E2"] # Reverse-coded item.
-fit = conogive(extraversion)
+if(require("psychTools")) {
+  extraversion = psychTools::bfi[c("E1", "E2", "E3", "E4", "E5")]
+  extraversion[, "E1"] = 7 - extraversion[, "E1"] # Reverse-coded item.
+  extraversion[, "E2"] = 7 - extraversion[, "E2"] # Reverse-coded item.
+  fit = conogive(extraversion)
+}
 }
 \references{
 McDonald, R. P. (1997). Normal-ogive multidimensional model. In W. J.

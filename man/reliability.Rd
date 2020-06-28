@@ -46,12 +46,14 @@ true latent variable and the best linear predictor of the observed
 Likert-type data. See ((ref)) for definitions.
 }
 \examples{
-agreeableness = psychTools::bfi[c("A1", "A2", "A3", "A4", "A5")]
-agreeableness[, "A1"] = 7 - agreeableness[, "A1"] # Reverse-coded item.
-object = conogive(agreeableness)
-ordinal_r(object, weights = "equal") # 0.6394087
-theoretical_ordinal_alpha(object) # 0.7589922
-theoretical_ordinal_r(object, weights = "equal") # 0.7689878
-ordinal_r(object, weights = "optimal") # 0.6763742
-theoretical_ordinal_r(object) # 0.8101108
+if(require("psychTools")) {
+  agreeableness = psychTools::bfi[c("A1", "A2", "A3", "A4", "A5")]
+  agreeableness[, "A1"] = 7 - agreeableness[, "A1"] # Reverse-coded item.
+  object = conogive(agreeableness)
+  ordinal_r(object, weights = "equal") # 0.6394087
+  theoretical_ordinal_alpha(object) # 0.7589922
+  theoretical_ordinal_r(object, weights = "equal") # 0.7689878
+  ordinal_r(object, weights = "optimal") # 0.6763742
+  theoretical_ordinal_r(object) # 0.8101108
+}
 }

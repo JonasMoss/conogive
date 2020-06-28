@@ -1,24 +1,24 @@
 {
-    "id": "EF3B3D90",
+    "id": "93113D2F",
     "path": "~/GitHub/conogive/R/conogive.R",
     "project_path": "R/conogive.R",
     "type": "r_source",
     "hash": "0",
     "contents": "",
     "dirty": false,
-    "created": 1593339294355.0,
+    "created": 1593343103200.0,
     "source_on_save": false,
-    "relative_order": 3,
+    "relative_order": 5,
     "properties": {
-        "cursorPosition": "203,18",
-        "scrollLine": "182"
+        "cursorPosition": "202,10",
+        "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1593339913,
+    "lastKnownWriteTime": 1593343180,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1593339913317,
+    "last_content_update": 1593343180925,
     "read_only": false,
     "read_only_alternatives": []
 }

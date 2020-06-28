@@ -19,16 +19,19 @@
 #' @export
 #' @return An object of class `conogive`.
 #' @examples
-#' extraversion = psychTools::bfi[c("E1", "E2", "E3", "E4", "E5")]
-#' extraversion[, "E1"] = 7 - extraversion[, "E1"] # Reverse-coded item.
-#' extraversion[, "E2"] = 7 - extraversion[, "E2"] # Reverse-coded item.
-#' fit = conogive(extraversion)
+#' if(require("psychTools")) {
+#'   extraversion = psychTools::bfi[c("E1", "E2", "E3", "E4", "E5")]
+#'   extraversion[, "E1"] = 7 - extraversion[, "E1"] # Reverse-coded item.
+#'   extraversion[, "E2"] = 7 - extraversion[, "E2"] # Reverse-coded item.
+#'   fit = conogive(extraversion)
+#' }
 #' @references
 #' McDonald, R. P. (1997). Normal-ogive multidimensional model. In W. J.
 #' van der Linden & R. K. Hambleton (Eds.), Handbook of Modern Item Response
 #' Theory (pp. 257–269). Springer.
 #' \url{https://doi.org/10.1007/978-1-4757-2691-6_15}
-#' ((arxiv paper))
+#' Moss, J. (2020). Please avoid the standardized alpha and the ordinal alpha.
+#' \url{psyarxiv.com/nvg5d}
 conogive = function(data, use = "complete.obs", ...) {
 
   if(is.list(data)) {
@@ -86,11 +89,13 @@ conogive = function(data, use = "complete.obs", ...) {
 #'    weights.
 #' @param ... Ignored.
 #' @examples
+#'  if(require("psychTools")) {
 #'    extraversion = psychTools::bfi[c("E1", "E2", "E3", "E4", "E5")]
 #'    extraversion[, "E1"] = 7 - extraversion[, "E1"] # Reverse-coded item.
 #'    extraversion[, "E2"] = 7 - extraversion[, "E2"] # Reverse-coded item.
 #'    object = conogive(extraversion)
 #'    hist(predict(object, extraversion)) # Plot distribution of predictions.
+#'  }
 #' @export
 predict.conogive = function(object, newdata, weights = c("optimal", "equal"),
                                                          ...) {
@@ -139,14 +144,16 @@ predict.conogive = function(object, newdata, weights = c("optimal", "equal"),
 #' @return The concrete ordinal reliability, theoretical ordinal reliability, or
 #'    theoretical ordinal alpha.
 #' @examples
-#' agreeableness = psychTools::bfi[c("A1", "A2", "A3", "A4", "A5")]
-#' agreeableness[, "A1"] = 7 - agreeableness[, "A1"] # Reverse-coded item.
-#' object = conogive(agreeableness)
-#' ordinal_r(object, weights = "equal") # 0.6394087
-#' theoretical_ordinal_alpha(object) # 0.7589922
-#' theoretical_ordinal_r(object, weights = "equal") # 0.7689878
-#' ordinal_r(object, weights = "optimal") # 0.6763742
-#' theoretical_ordinal_r(object) # 0.8101108
+#' if(require("psychTools")) {
+#'   agreeableness = psychTools::bfi[c("A1", "A2", "A3", "A4", "A5")]
+#'   agreeableness[, "A1"] = 7 - agreeableness[, "A1"] # Reverse-coded item.
+#'   object = conogive(agreeableness)
+#'   ordinal_r(object, weights = "equal") # 0.6394087
+#'   theoretical_ordinal_alpha(object) # 0.7589922
+#'   theoretical_ordinal_r(object, weights = "equal") # 0.7689878
+#'   ordinal_r(object, weights = "optimal") # 0.6763742
+#'   theoretical_ordinal_r(object) # 0.8101108
+#' }
 
 ordinal_r = function(object, xi = c("sample", "theoretical"),
                         weights = c("optimal", "equal")) {

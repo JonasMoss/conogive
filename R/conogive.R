@@ -30,7 +30,8 @@
 #' van der Linden & R. K. Hambleton (Eds.), Handbook of Modern Item Response
 #' Theory (pp. 257–269). Springer.
 #' \url{https://doi.org/10.1007/978-1-4757-2691-6_15}
-#' ((arxiv paper))
+#' Moss, J. (2020). Please avoid the standardized alpha and the ordinal alpha.
+#' \url{psyarxiv.com/nvg5d}
 conogive = function(data, use = "complete.obs", ...) {
 
   if(is.list(data)) {

@@ -10,7 +10,7 @@ Description: The congeneric normal-ogive model is a popular model for
    psychometric data (McDonald, R. P. (1997) <doi:10.1007/978-1-4757-2691-6_15>).
    This model estimates the model, calculates theoretical and concrete 
    reliability coefficients, and predicts the latent variable of the model. 
-   This is the companion package to <arxivID>.
+   This is the companion package to <10.31234/osf.io/nvg5d>.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

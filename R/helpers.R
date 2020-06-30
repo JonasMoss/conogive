@@ -15,7 +15,7 @@ thurstone = function(lambda, sigma) {
 #' @return Trace of the matrix.
 tr <- function(A) sum(diag(A))
 
-#' Transform y Into a Form Where Each Category is An Integer
+#' Transform y Into a Form Where Each Category is An Positive Integer
 #'
 #' @keywords internal
 #' @param y An array or data frame of observations.
@@ -25,7 +25,7 @@ ordered_y = function(y) {
   k = ncol(y)
   y = data.frame(apply(data.frame(y), 2, as.factor))
   for(i in seq.int(k)) levels(y[, i]) = seq.int(length(levels(y[, i])))
-  matrix(as.numeric(as.matrix(y)),ncol = k)
+  matrix(as.numeric(as.matrix(y)), ncol = k)
 }
 
 #' Remove Infinities from Vector, Append and Prepend `-Inf` and `Inf`, and Sort
@@ -129,8 +129,8 @@ xi_sample = function(y, cuts, use = "complete.obs") {
   cuts = massage_cuts(cuts, k)
   lengths = sapply(cuts, length) - 1
 
-  assertthat::assert_that(sum(lengths - n_categories) >= 0,
-   msg = "Smaller number of categories than length of cuts.")
+  assertthat::assert_that(sum(n_categories - lengths) <= 0,
+   msg = "Larger number of categories than length of cuts.")
 
   args = lapply(seq.int(k), function(i) x_hat(y[, i], cuts[[i]]))
   xhats = do.call(what = cbind, args = args)

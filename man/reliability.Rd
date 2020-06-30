@@ -2,59 +2,58 @@
 % Please edit documentation in R/conogive.R
 \name{reliability}
 \alias{reliability}
-\alias{ordinal_omega}
-\alias{ordinal_alpha}
-\alias{omega}
-\alias{alpha}
+\alias{ordinal_r}
+\alias{theoretical_ordinal_r}
+\alias{theoretical_ordinal_alpha}
 \title{Calculate the Ordinal Reliabiltiy}
 \usage{
-ordinal_omega(
+ordinal_r(
   object,
   xi = c("sample", "theoretical"),
-  weights = c("optimal", "equal", "sigma")
+  weights = c("optimal", "equal")
 )
 
-ordinal_alpha(object, xi = c("sample", "theoretical"))
+theoretical_ordinal_r(object, weights = c("optimal", "equal", "sigma"))
 
-omega(object, weights = c("optimal", "equal", "sigma"))
-
-alpha(object)
+theoretical_ordinal_alpha(object)
 }
 \arguments{
 \item{object}{An object of class \code{conogive}.}
 
 \item{xi}{How to calculate the Xi matrix. Option \code{"theoretical"} calculates
 the theoretical Xi matrix from \code{rho}, while  \code{"sample"} calculates the
-sample Xi matrix..}
+sample Xi matrix.}
 
-\item{weights}{The weights used to calculate the ordinal omega and omega.
-Option \code{"optimal"} uses the optimal weights, \code{"equal"} the equal weights,
-and \code{"sigma"} the sigma weights.}
+\item{weights}{The weights used to calculate the ordinal reliability.
+Option \code{"optimal"} uses the optimal weights and \code{"equal"} the equal
+weights.}
 }
 \value{
-The ordinal omega, ordinal alpha, theoretical omega, or theoretical
-alpha.
+The concrete ordinal reliability, theoretical ordinal reliability, or
+theoretical ordinal alpha.
 }
 \description{
-The functions \code{ordinal_omega } and \code{ordinal_alpha} calculate the ordinal
-reliability and the ordinal alpha. The functions \code{omega} and \code{alpha}
-calculates the theoretical reliability and alpha based on the polychoric
-correlation matrix.
+The function \code{ordinal_r } calculates the concrete ordinal reliability.
+The functions \code{theoretical_ordinal_r} and \code{theoretical_ordinal_alpha}
+calculates the theoretical ordinal reliability and alpha based on the
+polychoric correlation matrix.
 }
 \details{
-The population value of ordinal alpha equals the ordinal reliability when
-the underlying multivariate normal is parallel. The ordinal reliability
-is the sqaured correlation between the true latent variable and the
-best linear predictor of the observed Likert-type data.
+The population value of theoretical ordinal alpha equals the theoretical
+ordinal reliability when the underlying multivariate normal is parallel.
+The concrete ordinal reliability is the sqaured correlation between the
+true latent variable and the best linear predictor of the observed
+Likert-type data. See ((ref)) for definitions.
 }
 \examples{
-agreeableness = psychTools::bfi[c("A1", "A2", "A3", "A4", "A5")]
-agreeableness[, "A1"] = 7 - agreeableness[, "A1"] # Reverse-coded item.
-object = conogive(agreeableness)
-ordinal_alpha(object) # 0.6267724
-ordinal_omega(object, weights = "equal") # 0.6394087
-alpha(object) # 0.7589922
-omega(object, weights = "equal") # 0.7689878
-ordinal_omega(object, weights = "optimal") # 0.6763742
-omega(object) # 0.8101108
+if(require("psychTools")) {
+  agreeableness = psychTools::bfi[c("A1", "A2", "A3", "A4", "A5")]
+  agreeableness[, "A1"] = 7 - agreeableness[, "A1"] # Reverse-coded item.
+  object = conogive(agreeableness)
+  ordinal_r(object, weights = "equal") # 0.6394087
+  theoretical_ordinal_alpha(object) # 0.7589922
+  theoretical_ordinal_r(object, weights = "equal") # 0.7689878
+  ordinal_r(object, weights = "optimal") # 0.6763742
+  theoretical_ordinal_r(object) # 0.8101108
+}
 }

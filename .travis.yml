@@ -6,7 +6,7 @@ latex: false
 
 jobs:
   include:
-  # - r: devel
+  - r: devel
   - os: osx
   - r: release
     after_success:

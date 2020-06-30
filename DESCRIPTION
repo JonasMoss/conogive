@@ -1,28 +1,28 @@
 Package: conogive
-Title: Estimation, Reliability Coefficients, and Prediction for the Congeneric
-   Ogive Model
-Version: 0.1.1
+Title: Congeneric Normal-Ogive Model
+Version: 1.0.0
 Authors@R: c(
     person("Jonas", "Moss", , "jonas.gjertsen@gmail.com", role = c("aut", "cre"), 
       comment = c(ORCID = "0000-0002-6876-6964")
     ))
-Description: Estimation, reliability coefficients, and prediction for the 
-   congeneric ogive model.
+Description: The congeneric normal-ogive model is a popular model for 
+   psychometric data (McDonald, R. P. (1997) <doi:10.1007/978-1-4757-2691-6_15>).
+   This model estimates the model, calculates theoretical and concrete 
+   reliability coefficients, and predicts the latent variable of the model. 
+   This is the companion package to Moss (2020) <doi:10.31234/osf.io/nvg5d>.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 URL: https://github.com/JonasMoss/conogive
 BugReports: https://github.com/JonasMoss/conogive/issues
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.0
 Imports: 
-    lavaan,
-    xtable,
     psych,
     mvtnorm,
     checkmate,
-    psychTools,
     assertthat
 Suggests: 
     testthat (>= 2.1.0),
+    psychTools,
     covr

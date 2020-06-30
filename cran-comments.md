@@ -1,3 +1,7 @@
+## Resubmission
+Changed title to "Congeneric Normal-Ogive Model" to make it less than 65
+characters long.
+
 ## Test environments
 * local Windows 10, R version R version 4.0.2
 * Windows Server 2012 R2 x64 (build 9600) (on AppVeyor) R version 4.0.0 Patched (2020-05-18 r78487)

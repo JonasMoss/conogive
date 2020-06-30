@@ -1,6 +1,5 @@
 Package: conogive
-Title: Estimation, Reliability Coefficients, and Prediction for the Congeneric
-   Normal-Ogive Model
+Title: Congeneric Normal-Ogive Model
 Version: 1.0.0
 Authors@R: c(
     person("Jonas", "Moss", , "jonas.gjertsen@gmail.com", role = c("aut", "cre"), 

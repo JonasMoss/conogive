@@ -2,7 +2,7 @@
 % Please edit documentation in R/conogive.R
 \name{conogive}
 \alias{conogive}
-\title{Estimate a Latent Congeneric Model}
+\title{Estimate a Congeneric Normal-Ogive Model}
 \usage{
 conogive(data, use = "complete.obs", ...)
 }
@@ -45,5 +45,5 @@ van der Linden & R. K. Hambleton (Eds.), Handbook of Modern Item Response
 Theory (pp. 257–269). Springer.
 \url{https://doi.org/10.1007/978-1-4757-2691-6_15}
 Moss, J. (2020). Please avoid the standardized alpha and the ordinal alpha.
-\url{psyarxiv.com/nvg5d}
+\url{https://psyarxiv.com/nvg5d}
 }

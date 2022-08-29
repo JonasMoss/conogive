@@ -1,12 +1,60 @@
+#' Massage tau to the Desired Shape
+#'
+#' @param tau A matrix, list, or vector of tau
+#' @param k Optional `k` saying how many times the vector of tau should be
+#'    repeated. Only matters when `tau` is a vector.
+massage_tau = function(tau, k)  {
+
+  if(!missing(k)) checkmate::assert_count(k)
+
+  if (checkmate::testAtomicVector(tau)) {
+    if(missing(k)) k = 1
+    tau = t(matrix(rep(trim_vector(tau), k), nrow = length(tau)))
+  }
+
+  if(is.matrix(tau)) {
+    tau = lapply(seq.int(nrow(tau)), function(i) trim_vector(tau[i, ]))
+  }
+
+  checkmate::assert_list(tau)
+
+  tau
+
+}
+
 #' Thurstone weights
 #'
 #' @keywords internal
 #' @param lambda Vector of loadings.
 #' @param sigma Vector of standard deviations.
 #' @return The Thurstone weights.
-
-thurstone = function(lambda, sigma) {
+thurstone = function(lambda, sigma = sqrt(1 - lambda ^ 2)) {
   c(lambda/(sigma^2 * (1 + sum (lambda^2 / sigma^2))))
+}
+
+#' Transform lambda vector to correlation matrix
+#'
+#' @keywords internal
+#' @param lambda Vector of lambdas.
+#' @return Implied correlation matrix.
+lambda_to_phi = function(lambda) {
+  lambda %*% t(lambda) + diag(1 - lambda^2)
+}
+
+#' Transform vector into list of vectors.
+#'
+#' @keywords internal
+#' @param x A vector
+#' @param ns A vector of non-negative integers specifying how many
+#'    elements of `x` goes into the `i`th vector of the list.
+#' @return A list of vectors.
+vec_to_list = function(x, ns) {
+  current_index = 1
+  lapply(ns, function(n) {
+    y = x[current_index:(current_index + n - 1)]
+    current_index <<- current_index + n
+    y
+  })
 }
 
 #' Trace of matrix
@@ -144,17 +192,52 @@ xi_sample = function(y, cuts, use = "complete.obs") {
 #' @param y Vector of observations.
 #' @param cuts Vector of cuts.
 #' @return The X_hats associated with `y` and `cuts`.
-x_hat = function(y, cuts) {
+x_hat2 = function(y, tau, ...) {
 
-  checkmate::assert_atomic_vector(y)
-  checkmate::assert_numeric(y)
+  g = function(y, cuts) {
+    checkmate::assert_atomic_vector(y)
+    checkmate::assert_numeric(y)
 
-  f = function(i) {
-    -(stats::dnorm(cuts[i + 1]) - stats::dnorm(cuts[i]))/
-      (stats::pnorm(cuts[i + 1]) - stats::pnorm(cuts[i]))
+    f = function(i) {
+      -(stats::dnorm(cuts[i + 1]) - stats::dnorm(cuts[i]))/
+        (stats::pnorm(cuts[i + 1]) - stats::pnorm(cuts[i]))
+    }
+
+    values = sapply(seq(length(cuts) - 1), f)
+
+    values[y]
   }
 
-  sapply(X = y, FUN = f)
+  sapply(1:ncol(result$y), function(i) g(result$y[, i], tau[[i]]))
+
+}
+
+#' Transform Likert data to optimal scores
+#'
+#' The `pmvnorm.algorithm` specifies how `tmvtnorm::mtmvnorm` calculates the
+#'    integrating constant. See `mvtnorm::algorithms` for details. For `k>3`,
+#'    the options are `Miwa()` and `GenzBretz`, with `GenzBretz` being the only
+#'    option when `k>20`. Both algorithms are slow for typical problem sizes,
+#'    and `GenzBretz` is randomized.
+#'
+#' @export
+#' @param y Vector of observations.
+#' @param phi Correlation matrix.
+#' @param tau List of taus.
+#' @param pmvnorm.algorithm Passed to `tmvtnorm::mtmvnorm`.
+#' @return The X_hats associated with `y` and `cuts`.
+x_hat = function(y, phi, tau, pmvnorm.algorithm = mvtnorm::GenzBretz()) {
+
+  k = nrow(phi)
+  f = function(y_) {
+    l = sapply(seq(k), function(i) tau[[i]][y_[i]])
+    u = sapply(seq(k), function(i) tau[[i]][y_[i] + 1])
+    tmvtnorm::mtmvnorm(mean = rep(0, k), sigma = phi, lower = l, upper = u,
+                       pmvnorm.algorithm = pmvnorm.algorithm,
+                       doComputeVariance = FALSE)$tmean
+  }
+  mf <- memoise::memoise(f)
+  t(apply(y, 1, mf))
 
 }
 

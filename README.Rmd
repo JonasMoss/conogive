@@ -31,11 +31,7 @@ knitr::opts_chunk$set(out.width='750px', dpi=200)
 
 ## Overview
 
-The congeneric normal-ogive model (McDonald, R. P., 1997) is a 
-psychometric model for Likert data with one latent factor. This package has 
-functions to estimate such models, calculate their ordinal reliabilities, and 
-make predictions. It implements the concrete ordinal reliabilities of 
-(Moss, 2020).
+The congeneric normal-ogive model (McDonald, R. P., 1997) is a  psychometric model for Likert data with one latent factor. They can be estimated by several `R` packages, including `lavaan`. This package provides the four scoring methods described by Moss (2022) for the congeneric normal-ogive model and their associated reliabilities. In addition, it implements the ordinal alpha (Zumbo et al. 2007), and the Green–Yang reliability (Green, Yang, 2009).
 
 ## Installation
 From inside `R`, use one of the following commands:
@@ -45,6 +41,7 @@ devtools::install_github("JonasMoss/conogive")
 
 ## Usage 
 
+**Change this to `lavaan`.**
 Estimate a congeneric normal-ogive model with `congive`, predict the value of the 
 latent factor with `predict`, and calculate the reliability with 
 `ordinal_r`.
@@ -67,4 +64,8 @@ hist(predict(object, extraversion)) # Plot distribution of predictions.
 ## References
 McDonald, R. P. (1997). Normal-ogive multidimensional model. In W. J. van der Linden & R. K. Hambleton (Eds.), Handbook of Modern Item Response Theory (pp. 257–269). Springer. https://doi.org/10.1007/978-1-4757-2691-6_15
 
-Moss, J. (2020). Please avoid the standardized alpha and the ordinal alpha. https://psyarxiv.com/nvg5d/
+Moss, J. (2022). Reliability for ordinal one-factor models and beyond. (submitted)
+
+Green, S. B., & Yang, Y. (2009). Reliability of Summed Item Scores Using Structural Equation Modeling: An Alternative to Coefficient Alpha. Psychometrika, 74(1), 155–167. https://doi.org/10.1007/s11336-008-9099-3
+
+Zumbo, B. D., Gadermann, A. M., & Zeisser, C. (2007). Ordinal Versions of Coefficients Alpha and Theta for Likert Rating Scales. Journal of Modern Applied Statistical Methods, 6(1), 4. https://doi.org/10.22237/jmasm/1177992180

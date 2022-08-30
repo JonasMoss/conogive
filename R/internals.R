@@ -1,23 +1,19 @@
-#' Reliability
+#' Calculate a reliability associated
 #'
 #' @param y Observed values.
 #' @param method One of `"sum"`, `"linear"`, `"marginal"`, or `"optimal"`.
 #' @param lambda Vector of factor loadings in the normal-ogive model.
 #' @param tau A list containing the vector of cuttoffs.
 #' @return The reliability coefficient.
-reliability = function(y, method = c("sum", "linear", "marginal", "optimal"),
-                       lambda, tau){
-
-  method = match.args(method)
-
-  if (method == "sum") {
-  } else if (method == "linear") {
-
-  } else if (method == "marg_con") {
-
-  } else if (method == "optimal") {
-
-  }
+reliability <- function(y, method = c("sum", "linear", "marginal", "optimal"),
+                        lambda, tau) {
+  method <- match.arg(method)
+  call <- rlang::call2(
+    glue::glue('reliability_{method}'),
+    lambda = lambda,
+    tau = tau,
+    y = y)
+  rlang::eval_bare(call)
 }
 
 #' Factor scores for the congeneric normal-ogive model.
@@ -29,9 +25,11 @@ reliability = function(y, method = c("sum", "linear", "marginal", "optimal"),
 #' @param lambda Vector of lambda coefficients in the normal-ogive model.
 #' @return A vector of factor scores.
 
-score = function(y, method = c("sum", "linear", "marg_con", "optimal"),
-                 tau, lambda) {
-  method = match.args(method)
+score <- function(y, method = c("sum", "linear", "marginal", "optimal"),
+                  tau, lambda) {
+  method <- match.args(method)
+
+  reliability_linear
 
   if (method == "sum") {
     rowsums(y)
@@ -42,8 +40,6 @@ score = function(y, method = c("sum", "linear", "marg_con", "optimal"),
   } else if (method == "optimal") {
 
   }
-
-
 }
 
 #' Transform parameters on `lavaan` form to usable form.
@@ -52,16 +48,16 @@ score = function(y, method = c("sum", "linear", "marg_con", "optimal"),
 #' @return A list containing `lambda` and `tau`.
 #' @keywords internal
 
-transform_params = function(obj) {
-  names_to_ns = function(names) {
-    filtered = sapply(names, function(x) strsplit(x, "|", fixed = TRUE)[[1]][1])
-    c(table(factor(filtered, levels=unique(filtered))))
+transform_params <- function(obj) {
+  names_to_ns <- function(names) {
+    filtered <- sapply(names, function(x) strsplit(x, "|", fixed = TRUE)[[1]][1])
+    c(table(factor(filtered, levels = unique(filtered))))
   }
 
-  lambda = c(lavaan::lavInspect(obj, what = "est")$lambda)
-  tau_ = lavaan::lavInspect(obj, what = "est")$tau
-  ns = names_to_ns(rownames(tau_))
-  tau = lapply(vec_to_list(tau_, ns), trim_vector)
+  lambda <- c(lavaan::lavInspect(obj, what = "est")$lambda)
+  tau_ <- lavaan::lavInspect(obj, what = "est")$tau
+  ns <- names_to_ns(rownames(tau_))
+  tau <- lapply(vec_to_list(tau_, ns), trim_vector)
   list(lambda = lambda, tau = tau)
 }
 
@@ -78,39 +74,39 @@ transform_params = function(obj) {
 #' @return The gradient at theta.
 NULL
 
-reliability_linear = function(lambda, tau) {
-  phi = lambda_to_phi(lambda)
-  psi = cov_yy_star(phi, tau)
-  gamma = cov_y(phi, tau)
-  v = thurstone(lambda)
-  w = solve(gamma, psi %*% v)
-  rel = c(crossprod(w, psi %*% v))^2 / c(crossprod(w, gamma %*% w))
-  list(scores = w, reliability = rel)
+reliability_linear <- function(lambda, tau, y) {
+  phi <- lambda_to_phi(lambda)
+  psi <- cov_yy_star(phi, tau)
+  gamma <- cov_y(phi, tau)
+  v <- thurstone(lambda)
+  w <- solve(gamma, psi %*% v)
+  rel <- c(crossprod(w, psi %*% v)) ^ 2 / c(crossprod(w, gamma %*% w))
+  list(weights = c(w), reliability = rel)
 }
 
-reliability_sum = function(lambda, tau) {
-  phi = lambda_to_phi(lambda)
-  psi = cov_yy_star(phi, tau)
-  gamma = cov_y(phi, tau)
-  v = thurstone(lambda)
-  w = rep(1, length(lambda))
-  rel = c(crossprod(w, psi %*% v))^2 / c(crossprod(w, gamma %*% w))
-  list(scores = w, reliability = rel)
+reliability_sum <- function(lambda, tau, y) {
+  phi <- lambda_to_phi(lambda)
+  psi <- cov_yy_star(phi, tau)
+  gamma <- cov_y(phi, tau)
+  v <- thurstone(lambda)
+  w <- rep(1, length(lambda))
+  rel <- c(crossprod(w, psi %*% v))^2 / c(crossprod(w, gamma %*% w))
+  list(weights = c(w), reliability = rel)
 }
 
-reliability_marginal = function(lambda, tau) {
-  phi = lambda_to_phi(lambda)
-  xi = cov_mu(phi, tau)
-  v = thurstone(lambda)
-  w = v
-  rel = c(crossprod(w, xi %*% v))^2 / c(crossprod(w, xi %*% w))
-  list(scores = w, reliability = rel)
+reliability_marginal <- function(lambda, tau, y) {
+  phi <- lambda_to_phi(lambda)
+  xi <- cov_mu(phi, tau)
+  v <- thurstone(lambda)
+  w <- v
+  rel <- c(crossprod(w, xi %*% v))^2 / c(crossprod(w, xi %*% w))
+  list(weights = c(w), reliability = rel)
 }
 
-reliability_optimal = function(lambda, tau) {
-  v = thurstone(lambda)
-  phi = lambda_to_phi(lambda)
-  w = x_hat(y, phi, tau)
-  rel = crossprod(v, cov(mus) %*% v)
-  list(scores = w, reliability = rel)
+reliability_optimal <- function(lambda, tau, y) {
+  v <- thurstone(lambda)
+  phi <- lambda_to_phi(lambda)
+  w <- x_hat(stats::na.omit(y), phi, tau)
+  rel <- crossprod(as.matrix(w) %*% v, as.matrix(w) %*% v)
+  list(weights = w, reliability = rel)
 }

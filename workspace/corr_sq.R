@@ -5,7 +5,7 @@ temp = cbind(lambda, sigma)/sqrt(lambda^2 + sigma^2)
 lambda = temp[, 1]
 sigma = temp[, 2]
 n = 10000
-result = simulate(n, lambda, sigma, tau)
+result = simulate(n, lambda, tau)
 
 phi = lambda_to_phi(lambda)
 preds = x_hat(result$y, phi, tau)
@@ -13,7 +13,7 @@ hats = preds %*% thurstone(lambda)
 eps = result$z - hats
 cor(result$z, eps)
 
-
+## This is the sum score reliability.
 c(cor(result$y %*% rep(1, 5), result$z)^2)
 
 v = thurstone(lambda, sigma)
@@ -30,7 +30,7 @@ cov_mu(phi, tau)
 ### Verify mu reliability, score
 cor(mu %*% i, result$z)^2
 phi = lambda_to_phi(lambda)
-xi = cov_mu (phi, tau)
+xi = cov_mu(phi, tau)
 
 ### Verify mu reliability, optimal
 cor(mu %*% w, result$z)^2
